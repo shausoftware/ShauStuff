@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:webflow-config="http://www.springframework.org/schema/webflow-config"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
+		http://www.springframework.org/schema/webflow-config http://www.springframework.org/schema/webflow-config/spring-webflow-config-2.4.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd">
+
+ 	<context:component-scan base-package="com.shau.stuff.controller" />
+ 	
+ 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+ 	
+ 	<mvc:annotation-driven></mvc:annotation-driven>
+ 
+ 	<mvc:resources location="/resources/css/" mapping="/css/**" />
+ 	<mvc:resources location="/resources/images/" mapping="/images/**" />
+ 	<mvc:resources location="/resources/js/" mapping="/js/**" />
+ 	<mvc:resources location="/resources/fonts/" mapping="/fonts/**" />
+ 	<mvc:resources location="/resources/images/favicon.ico" mapping="/favicon.ico" />
+ 	<mvc:resources location="/resources/unity/" mapping="/unity/**" />
+ 	<mvc:resources location="/resources/html/" mapping="/html/**" />
+	
+	<bean id="viewResolver"
+        class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
+        <property name="prefix">
+            <value>/WEB-INF/pages/</value>
+        </property>
+        <property name="suffix">
+            <value>.jsp</value>
+        </property>
+    </bean>
+    	
+</beans>

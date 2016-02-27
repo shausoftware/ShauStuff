@@ -1,0 +1,82 @@
+<div class="row">
+    
+    <div class="panel panel-default">
+        
+        <div class="panel-heading clearfix">
+            Map
+        </div>
+        
+        <div class="panel-body">
+
+            <p class="text-left">
+            	Maps seem to be almost as prevalent as cats on the Internet these days thanks to Googles excellent map API. So heres another one. 
+            	Why another one? See below for an explanation.
+            </p>
+            
+            <div class="maptoolbar">
+                <div class="mapsearch">
+                    <div class="input-group">       
+                        <input id="searchParameter" type="text" class="form-control" placeholder="Search"></input>
+                        <span class="input-group-addon primary">
+                            <a href="#" onclick="shaumap.search();" class="shaulink">Lookup</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="width:100%; display:inline;">
+
+                <div style="width:10%; height:600px; float:left; display:flex;">
+                    <div style="margin: auto; text-align: center;">
+                        <span class="glyphicon glyphicon-menu-up"></span>
+                    </div>	
+                </div>
+
+                <div style="width:90%; float: right;">
+
+                    <div id="mapWrapper" style="position: relative;">
+
+                        <div id="map-div" style="width: 100%; height: 600px; border: 1px solid black; float: left;"></div>
+
+                        <div id="shausearchresults" class="shausearchresults">
+                            <div id="shausearchresultsheader" class="shausearchresultsheader">
+                                <span>Search Results</span>
+                                <span style="float:right; padding-right: 5px;"><a href="#" class="shauclosesearch" title="Close" onclick="shaumap.closeSearchResults();"><b>X</b></a></span>
+                            </div>
+                            <div id="shauresultsrows" class="shauresultsrows">
+                                Results                      
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+             </div>
+                        
+        </div>
+        
+        <div class="panel-body">
+            
+            <h4>Comparison of Google Maps on iOS, Android and the Web</h4>
+        
+            <p class="text-left">
+                This particular Javascript implementation is part of an exersize testing Web, iOS and Android versions for the purposes of comparison. 
+                Whilst the language implementations are different the development experience for iOS and Android with a few minor exceptions 
+                (background tasks and notifications) seemed to be very similar to me. There still seem to be some limitations when using the 
+                Google Maps Javascript Web API on mobile. Mainly that the event model running in a desktop browser is very different to that on mobile 
+                and it would be nice if Google attempts to address some these issues in future releases. The web HTML5 space is very exciting at 
+                the moment and if technologies like WebGL and asm.js/WebAssembly take off then I think the need to develop Apps for iOS and Android will become less relevant. 
+                All three implementations can be found on my Github repository. The transportation data used in this example was taken from the
+                London Datastore and National Rail Enquiries and is served via KML web services on the back end of this site. The data is not being updated.  
+            </p>
+            
+        </div>
+        
+    </div>
+    
+    <script>
+        $(document).ready(shaumap.initGMap());
+    </script>
+    
+</div>

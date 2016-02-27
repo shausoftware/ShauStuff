@@ -1,0 +1,141 @@
+<div class="row">
+    
+    <div class="panel panel-default">
+        
+        <div class="panel-heading clearfix">
+            Virtual Trigger
+        </div>
+        
+        <div class="panel-body">
+        
+            <p class="text-left">
+            
+                Virtual Trigger is an Audio Unit I'm developing that triggers MIDI note events 
+                when a threshold amplitude of an audio signal is exceeded. I initially developed the trigger on hardware using an op-amp
+                circuit I designed and an Arduino as the controller and MIDI event generator (I hope to get the code and circuit diagrams onto Github soon).
+                It works well, so I decided to port it to a software based solution. 
+                The plug-in in it's current state runs as an Audio Unit Effect and the screenshot below shows the Virtual Trigger 
+                running in Apple Logic Pro X. To install the plug-in copy the file VirtualTrigger.component to either of the following folders: <br/>
+                <br/>
+                "&frasl;Library&frasl;Audio&frasl;Plug-Ins&frasl;Components" <br/>
+                "~&frasl;Library&frasl;Audio&frasl;Plug-Ins&frasl;Components" <br/>
+                <br/>
+                This is very much a work in progress and my plan is develop this a lot further, with the ultimate aim of driving MIDI performances 
+                from live performance. Please be aware that the MIDI is currently firing ahead of the audio that triggers it.
+                My algorithms are sample accurate and ideally I would have liked to have used the Audio Unit MIDI output callback specification but unfortunately it
+                seems like most hosts including Logic do not support it. Another approach I tried taking was to try and get the predicted host time of the individual samples 
+                playback. Again I ran into issues as Logic only passes the sample time (not host time) in the AudioTimeStamp provided for each render, which would be great if 
+                the MIDI callback functionality was available. In the end I had to take a huge compromise and provided a control to compensate for the early firing. As a result triggering 
+                isn't sample accurate :(    
+                As it doesn't seem possible to get this to run in any DAW the next step is to create a custom host that does supply the host time. The DSP 
+                code for the plug-in can be found in my Github repository.
+                Please read on for further information on the plug-ins functionality. <br/>
+                <br/>
+
+            </p>
+            
+            <p class="text-center">
+                Click to <a href="/shaufileview/view?searchKey=virtualTrigger" target="_blank" class="shaulink">Download</a> Audio Unit.
+            </p>
+            
+            <p class="text-center">
+            
+                <img src="/images/vtScreenshot.JPG"  alt="Screenshot of Virtual Trigger" width="80%"/><br/>
+                <br/>
+                Screenshot of the Virtual Trigger plug-in
+            
+            </p>
+            
+            <h3>Controls</h3>
+            
+            <div class="hidden-md hidden-lg">
+                <small><em>Scroll Table >></em></small>
+            </div>
+            
+            <div class="table-responsive">
+            <table class="table table-striped">
+            
+                <thead>
+                    <tr>
+                        <th>Control Name</th>
+                        <th>Description of Control Function</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>Amplitude Display</td>
+                        <td>
+                            Displays the audio signal with time running along the x-axis. 
+                            The colour of each element represents the audio signal amplitude (dark green = low volume, 
+                            brighter green = increased volume, red = audio clipping and mauve/purple = trigger event)                        
+                        </td>
+                    </tr>                
+
+                    <tr>
+                        <td>Internal External MIDI</td>
+                        <td>
+                            Switches between firing the MIDI trigger event as client(internal) or as a server(external).
+                        </td>
+                    </tr>                
+
+                    <tr>
+                        <td>Window Size</td>
+                        <td>
+                            Sets the length of the RMS analysis window. This control has no affect in Peak mode.
+                        </td>
+                    </tr>                
+
+                    <tr>
+                        <td>Reset Delay</td>
+                        <td>
+                            Sets the delay time after a trigger event where signal analysis is inactive. This is used to prevent re-triggering.
+                        </td>
+                    </tr>                
+
+                    <tr>
+                        <td>Trigger Delay</td>
+                        <td>
+                            Sets the delay of the MIDI event being fired after the trigger event.
+                        </td>
+                    </tr>                
+
+                    <tr>
+                        <td>Trigger Threshold</td>
+                        <td>
+                            Sets the threshold at which audio signal amplitude triggers a MIDI event.
+                        </td>
+                    </tr>                
+
+                    <tr>
+                        <td>Trigger Note</td>
+                        <td>
+                            MIDI note to play when triggered.                       
+                        </td>
+                    </tr>                
+
+                    <tr>
+                        <td>Octave</td>
+                        <td>
+                            Octave of MIDI note to play when triggered.                       
+                        </td>
+                    </tr>                
+
+                    <tr>
+                        <td>MIDI Channel</td>
+                        <td>
+                            MIDI channel on which MIDI note event is created.                       
+                        </td>
+                    </tr>                
+
+                </tbody>
+            
+            </table>
+            </div>
+                                
+        </div>
+        
+    </div>
+    
+</div>

@@ -1,0 +1,56 @@
+<div class="row">
+    
+    <div class="panel panel-default">
+        
+        <div class="panel-heading clearfix">
+            Julia Set Page
+        </div>
+        
+        <div class="panel-body">
+            
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <p class="text-center">
+                        <input class="btn btn-primary btn-sm" id="smallzoomout" onclick="shaujuliaset.largeZoomOut();" type="button" value="<<"></input>            
+                        <input class="btn btn-primary btn-sm" id="smallzoomout" onclick="shaujuliaset.smallZoomOut();" type="button" value="<"></input>            
+                        &nbsp; <span id="currentzoom"></span> &nbsp;            
+                        <input class="btn btn-primary btn-sm" id="smallzoomin" onclick="shaujuliaset.smallZoomIn();" type="button" value=">"></input>            
+                        <input class="btn btn-primary btn-sm" id="smallzoomin" onclick="shaujuliaset.largeZoomIn();" type="button" value=">>"></input>            
+                    </p>
+                </div>
+                <div class="form-group">
+                    <p class="text-center">
+                        Change Zoom Level of Julia Set
+                    </p>
+                </div>
+            </form>
+            
+            <div id="juliasetwrapper" class="juliasetwrapper">
+                <canvas id="shauJuliaSetCanvas" width="900px" height="600px"></canvas>
+            </div>            
+            
+            <p class="text-center">
+                I've always loved fractals and this Julia Set especially so. Gaston Maurice Julia realised the mathematics for this at the beginning of 
+                the 20th Century and it's only with the advent of computer rendering that we have been able to appreciate their beauty. 
+                This simple implementation uses Javascript to render the set on an HTML Canvas and I think it's pretty quick considering what it's doing.
+                It's not even utilising WebGL.   
+            </p>
+            
+        </div>
+        
+    </div>
+    
+    <script>
+        var resizeTimer;
+        shaujuliaset.initJuliaSet();
+
+        $(window).on("resize", function () {
+            //delay redraw
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function () {
+                shaujuliaset.initJuliaSet();
+            }, 250);
+        });
+    </script>
+    
+</div>

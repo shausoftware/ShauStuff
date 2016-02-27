@@ -1,0 +1,45 @@
+<div class="row">
+    
+    <div class="panel panel-default">
+        
+        <div class="panel-heading clearfix">
+            Home Page
+        </div>
+        
+        <div id="home-panel-body" class="panel-body">
+            
+            <p class="text-left">
+                Hi There! SHAUSTUFF is a platform for my experiments in HTML5, JavaScript, WebGL, Bootstrap, Java, Spring, Map APIs and Unity. All of the source code for this site is shared on GitHub. However first things first, here's
+                some pictures of cats...
+            </p>            
+            
+            <p class="text-center">
+                <canvas id="shauSlideshowCanvas" width="620" height="420"></canvas>
+            </p>
+            
+            <p class="text-left">
+                ...after all this is what the Internet was invented for. This is the second iteration of this site: 
+                The first iteration was implemented using Apache Wicket and very little else: 
+                However for this iteration the site has been implemented as a single page, JavaScript-centric, mobile friendly application. 
+                To access the code presented on this site please take at look at the Links section of this site to access my GitHub repository. The rotating cube in the Navigation Bar is my first foray into WebGL :)
+            </p>
+        
+        </div>
+        
+    </div>
+    
+    <script>
+        var resizeTimer;
+        $(document).ready(shauslider.initSlideshow());
+        
+        $(window).on("resize", function () {
+            //delay redraw
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function () {
+                shauslider.stopSlideshowThread();
+                shauslider.initSlideshow();
+            }, 250);
+        });
+    </script>
+        
+</div>

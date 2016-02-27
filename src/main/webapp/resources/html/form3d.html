@@ -1,0 +1,50 @@
+<div class="row">
+    
+    <div class="panel panel-default">
+        
+        <div class="panel-heading clearfix">
+            Form 3D
+        </div>
+        
+        <div class="panel-body">
+
+            <p class="text-left">
+                 Form 3D is a geometric shape game/toy inspired by the DOS application Form by Andrew Rowbottom and the WINAMP screensaver Geiss by Ryan Geiss.
+                 This Unity 4 game creates a pattern of simple 3D geometric forms whose relationships to each other can be changed by varying parameters (similar to Form).
+                 Configuration parameters can be saved into slots where changing the current slot animates the geometric shapes into their new configuration.
+                 This in conjunction with real-time manipulation of application parameters such as the camera (using keyboard shortcuts) creates visual candy (a la Geiss). <br/>
+                 When this page initially loads the game is running in a demo mode. To get going quickly set the focus to the Unity Player and press the <b>F</b> key to open the Form Builder tool.
+                 To change the form colours and background skybox press the <b>P</b> key to open the colour palette.
+                 For a more comprehensive guide press the <b>H</b> key to open the Help dialogue. <br/>
+            </p>
+            
+            <div class="hidden-md hidden-lg">
+                <p class="text-center">
+                    <strong>The Unity Web Player is not currently available for Mobile devices.</strong>
+                </p>
+            </div>
+            <div class="hidden-xs hidden-sm">
+	            <div class="shaurow">
+	                <div class="shauwebplayer">
+	                    <div id="unityPlayer">
+	                        <div class="missing">
+	                            <a href="http://unity3d.com/webplayer/" title="Unity Web Player. Install now!">
+	                                <img alt="Unity Web Player. Install now!" src="http://webplayer.unity3d.com/installation/getunity.png" width="193" height="63" />
+	                            </a>
+	                        </div>
+	                    </div>
+	                    <br/>
+	                    Form 3D on the Unity Web Player
+	                </div>  
+	            </div>
+            </div>
+                        
+        </div>
+        
+    </div>
+
+    <script>
+        $(document).ready(form3d.initForm3d());
+    </script>
+
+</div>
